@@ -33,8 +33,9 @@ export default function HeroCarousel() {
   }
 
   return (
-    <div className="header-carousel mb-5">
-      <div className="carousel slide" data-bs-ride="carousel">
+    <div className="header-carousel mb-5 position-relative" style={{ height: '700px', overflow: 'hidden' }}>
+      {/* Carousel Slides - Only images change */}
+      <div className="carousel slide position-absolute w-100 h-100" data-bs-ride="carousel">
         <ol className="carousel-indicators">
           {slides.map((_, index) => (
             <li
@@ -47,17 +48,17 @@ export default function HeroCarousel() {
             ></li>
           ))}
         </ol>
-        <div className="carousel-inner" role="listbox">
+        <div className="carousel-inner h-100" role="listbox">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`carousel-item ${activeIndex === index ? 'active' : ''}`}
+              className={`carousel-item h-100 ${activeIndex === index ? 'active' : ''}`}
             >
               <div
                 style={{
                   position: 'relative',
                   width: '100%',
-                  height: '700px',
+                  height: '100%',
                   overflow: 'hidden',
                 }}
               >
@@ -69,23 +70,39 @@ export default function HeroCarousel() {
                   priority={index === 0}
                 />
               </div>
-              <div className="carousel-caption">
-                <div className="container py-4">
-                  <div className="row g-5">
-                    <div className="col-lg-6">
-                      <BookingForm />
-                    </div>
-                    <div className="col-lg-6 d-none d-lg-flex">
-                      <div className="text-start">
-                        <h1 className="display-5 text-white">{slide.title}</h1>
-                        <p>{slide.subtitle}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           ))}
+        </div>
+      </div>
+      
+      {/* Booking Form Overlay - Fixed, persists across slide changes */}
+      <div 
+        className="position-absolute w-100 h-100 d-flex align-items-center" 
+        style={{ 
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.6)',
+          zIndex: 10
+        }}
+      >
+        <div className="container py-4">
+          <div className="row g-5 align-items-center">
+            <div className="col-lg-6">
+              <BookingForm />
+            </div>
+            <div className="col-lg-6 d-none d-lg-flex">
+              <div className="text-start">
+                <h1 className="display-5 text-white mb-3 animate__animated animate__fadeInRight">
+                  {slides[activeIndex].title}
+                </h1>
+                <p className="text-white fs-5 animate__animated animate__fadeInRight" style={{ animationDelay: '0.2s' }}>
+                  {slides[activeIndex].subtitle}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

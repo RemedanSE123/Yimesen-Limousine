@@ -1,0 +1,49 @@
+/* Admin Dashboard - Clean and Simple Styles */
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+/* Table enhancements */
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Simple badges */
+.badge {
+  padding: 0.4em 0.6em;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+
+/* Modal - clean design */
+.modal-content {
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+  background: #f8f9fa;
+}
+
+/* Form enhancements */
+.form-select:focus,
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+
+/* Transition opacity for carousel */
+.transition-opacity {
+  transition: opacity 0.8s ease-in-out;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
