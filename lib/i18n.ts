@@ -120,7 +120,9 @@ export const translations = {
 
 export function getTranslation(lang: Language, key: string): string {
   const keys = key.split('.')
-  let value: any = translations[lang] || translations.en
+  // Get translations for the requested language, fallback to English if not available
+  const langTranslations = (translations as any)[lang] || translations.en
+  let value: any = langTranslations
 
   for (const k of keys) {
     value = value?.[k]

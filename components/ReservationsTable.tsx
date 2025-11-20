@@ -17,7 +17,9 @@ interface Reservation {
   customer_email?: string
   customer_phone?: string
   status: string
+  notes?: string
   created_at: string
+  updated_at: string
 }
 
 interface ReservationsTableProps {
